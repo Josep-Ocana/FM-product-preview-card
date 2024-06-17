@@ -1,9 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-	entry: '.src/index.js',
+	entry: './src/index.js',
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'dist'),
@@ -15,17 +16,35 @@ module.exports = {
 				test: /\.scss$/,
 				use: ['style-loader', 'css-loader', 'sass-loader'],
 			},
+			{
+				test: /\.html$/,
+				use: [
+					{
+						loader: 'html-loader',
+						options: { minimize: true },
+					},
+				],
+			},
 		],
 	},
 	plugins: [
-		new CleanWebpackPlugin(),
 		new HtmlWebpackPlugin({
 			template: './src/index.html',
+			filename: 'index.html',
+			inject: 'body', // Inyectar los archivos generados al final del body
+		}),
+		new CleanWebpackPlugin(),
+		new CopyWebpackPlugin({
+			patterns: [{ from: 'src/assets/images', to: 'assets/images' }],
 		}),
 	],
+	devtool: 'source-map',
 	devServer: {
-		contentbase: path.resolve(__dirname, 'dist'),
+		static: {
+			directory: path.join(__dirname, 'dist'),
+		},
 		compress: true,
 		port: 9000,
+		open: true, // Abre automáticamente el navegador al iniciar el servidor
 	},
 };
