@@ -4,4 +4,30 @@
 
 body {
 	background: #fff;
+	display: grid;
+	place-content: center;
+}
+
+.hero-container {
+	display: flex;
+	flex-direction: row;
+	max-height: 500px;
+}
+
+.info {
+	display: flex;
+	flex-direction: column;
+}
+
+.add-to-card-btn {
+	border: none;
+	padding: 5px 10px;
+	text-align: center;
+	background: $dark-cyan;
+}
+
+.attribution {
+	position: absolute;
+	bottom: 0;
+	left: 0;
 }

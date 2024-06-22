@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -37,13 +38,15 @@ module.exports = {
 		new CopyWebpackPlugin({
 			patterns: [{ from: 'src/assets/images', to: 'assets/images' }],
 		}),
+		new webpack.HotModuleReplacementPlugin(),
 	],
 	devtool: 'source-map',
 	devServer: {
 		static: {
 			directory: path.join(__dirname, 'dist'),
 		},
-		compress: true,
+		hot: true,
+		compress: true, // Habilitar HMR
 		port: 9000,
 		open: true, // Abre automáticamente el navegador al iniciar el servidor
 	},
