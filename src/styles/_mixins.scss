@@ -1,0 +1,28 @@
+@mixin row {
+	display: flex;
+	flex-direction: row;
+}
+
+@mixin column {
+	display: flex;
+	flex-direction: column;
+}
+
+@mixin line-height($height) {
+	line-height: $height;
+}
+
+@mixin color-weight($color, $weight) {
+	color: $color;
+	font-weight: $weight;
+}
+
+@mixin button($color, $background, $size) {
+	color: $color;
+	background-color: $background;
+	font-size: $size;
+}
+
+@mixin radius($radius) {
+	border-radius: $radius;
+}

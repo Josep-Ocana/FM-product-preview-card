@@ -1,33 +1,107 @@
 @import 'variables';
 @import 'fonts';
 @import 'resets';
+@import 'mixins';
 
 body {
 	background: #fff;
 	display: grid;
-	place-content: center;
+	place-items: center;
+	min-height: 100vh;
+	background: $cream;
 }
 
 .hero-container {
-	display: flex;
-	flex-direction: row;
-	max-height: 500px;
+	@include row;
+	justify-content: space-between;
+	width: 42rem;
+	height: 460px;
+	overflow: hidden;
+	border-radius: 10px;
+	background: $cream;
+
+	.container-img {
+		flex-basis: 50%;
+		overflow: hidden;
+		#img-hero {
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	.info {
+		flex-basis: 50%;
+		@include column;
+		padding: 2.3rem;
+		width: 100%;
+		height: 100%;
+		background: $white;
+
+		.product-category {
+			@include color-weight($dark-grayish-blue-opacity, 600);
+			text-transform: uppercase;
+			letter-spacing: 5px;
+			font-size: 12px;
+		}
+
+		.product-name {
+			@include line-height(2.3rem);
+			font: {
+				family: $font-secondary;
+				size: 2.3rem;
+			}
+		}
+
+		.product-description {
+			@include color-weight($dark-grayish-blue-opacity, 600);
+			line-height: 1.8rem;
+		}
+
+		.price {
+			@include row;
+			align-items: center;
+			.discount-price {
+				color: $dark-cyan;
+				margin-right: 1.2rem;
+				font: {
+					size: 2.3rem;
+					weight: 700;
+					family: $font-secondary;
+				}
+			}
+			.original-price {
+				@include color-weight($dark-grayish-blue-opacity, 600);
+				text-decoration: line-through;
+			}
+		}
+
+		.add-to-card-btn {
+			@include row;
+			@include button($white, $dark-cyan, 14.5px);
+			@include radius(8px);
+			justify-content: center;
+			align-items: center;
+			border: none;
+			padding-block: 5 px;
+			font-weight: 700;
+
+			.icon {
+				padding: 1rem;
+			}
+		}
+	}
+	.info > *:not(:last-child) {
+		margin-bottom: 1.8rem;
+	}
 }
 
-.info {
-	display: flex;
-	flex-direction: column;
-}
-
-.add-to-card-btn {
-	border: none;
-	padding: 5px 10px;
-	text-align: center;
-	background: $dark-cyan;
-}
-
+// Footer
 .attribution {
 	position: absolute;
 	bottom: 0;
 	left: 0;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	padding: 10px;
 }
