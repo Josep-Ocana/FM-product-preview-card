@@ -1,3 +1,3 @@
 import './styles/main.scss';
 
-console.log('Hello from Webpack');
+console.log('Bienvenido al proyecto de preview-card-component-main');

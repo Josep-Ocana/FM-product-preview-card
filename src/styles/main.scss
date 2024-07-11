@@ -4,104 +4,145 @@
 @import 'mixins';
 
 body {
-	background: #fff;
-	display: grid;
-	place-items: center;
-	min-height: 100vh;
-	background: $cream;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  background: $cream;
 }
 
 .hero-container {
-	@include row;
-	justify-content: space-between;
-	width: 42rem;
-	height: 460px;
-	overflow: hidden;
-	border-radius: 10px;
-	background: $cream;
+  @include row;
+  @include radius(10px);
+  justify-content: space-between;
+  width: 42rem;
+  height: 460px;
+  overflow: hidden;
+  background: $cream;
 
-	.container-img {
-		flex-basis: 50%;
-		overflow: hidden;
-		#img-hero {
-			height: 100%;
-			object-fit: cover;
-		}
-	}
+  .hero-img {
+    width: 50%;
+    background-image: url('../assets/images/image-product-desktop.jpg');
+    background-size: cover;
+    height: 100%;
+  }
 
-	.info {
-		flex-basis: 50%;
-		@include column;
-		padding: 2.3rem;
-		width: 100%;
-		height: 100%;
-		background: $white;
+  .info {
+    width: 50%;
+    @include column;
+    padding: 2.3rem;
+    height: 100%;
+    background: $white;
 
-		.product-category {
-			@include color-weight($dark-grayish-blue-opacity, 600);
-			text-transform: uppercase;
-			letter-spacing: 5px;
-			font-size: 12px;
-		}
+    .product-category {
+      @include color-weight($dark-grayish-blue-opacity, 600);
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font-size: 12px;
+    }
 
-		.product-name {
-			@include line-height(2.3rem);
-			font: {
-				family: $font-secondary;
-				size: 2.3rem;
-			}
-		}
+    .product-name {
+      @include line-height(2.3rem);
+      font: {
+        family: $font-secondary;
+        size: 2.3rem;
+      }
+    }
 
-		.product-description {
-			@include color-weight($dark-grayish-blue-opacity, 600);
-			line-height: 1.8rem;
-		}
+    .product-description {
+      @include color-weight($dark-grayish-blue-opacity, 600);
+      line-height: 1.8rem;
+    }
 
-		.price {
-			@include row;
-			align-items: center;
-			.discount-price {
-				color: $dark-cyan;
-				margin-right: 1.2rem;
-				font: {
-					size: 2.3rem;
-					weight: 700;
-					family: $font-secondary;
-				}
-			}
-			.original-price {
-				@include color-weight($dark-grayish-blue-opacity, 600);
-				text-decoration: line-through;
-			}
-		}
+    .price {
+      @include row;
+      align-items: center;
+      .discount-price {
+        color: $dark-cyan;
+        margin-right: 1.2rem;
+        font: {
+          size: 2.3rem;
+          weight: 700;
+          family: $font-secondary;
+        }
+      }
+      .original-price {
+        @include color-weight($dark-grayish-blue-opacity, 600);
+        text-decoration: line-through;
+      }
+    }
 
-		.add-to-card-btn {
-			@include row;
-			@include button($white, $dark-cyan, 14.5px);
-			@include radius(8px);
-			justify-content: center;
-			align-items: center;
-			border: none;
-			padding-block: 5 px;
-			font-weight: 700;
+    .add-to-card-btn {
+      @include row;
+      @include button($white, $dark-cyan, 14.5px);
+      @include radius(8px);
+      justify-content: center;
+      align-items: center;
+      border: none;
+      padding-block: 5 px;
+      font-weight: 700;
 
-			.icon {
-				padding: 1rem;
-			}
-		}
-	}
-	.info > *:not(:last-child) {
-		margin-bottom: 1.8rem;
-	}
+      .icon {
+        padding: 1rem;
+      }
+    }
+  }
+  .info > *:not(:last-child) {
+    margin-bottom: 1.8rem;
+  }
 }
 
 // Footer
 .attribution {
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	display: flex;
-	justify-content: center;
-	width: 100%;
-	padding: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  @include row;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 20px;
+  font-family: $font-secondary;
+  a {
+    font: {
+      family: $font-primary;
+      weight: 500;
+    }
+  }
+}
+
+// Mobile screen
+@media (width < 590px) {
+  body {
+    @include column;
+    padding: 30px 15px;
+  }
+  .hero-container {
+    @include column;
+    width: 100%;
+    height: auto;
+
+    .hero-img {
+      background-image: url('../assets/images/image-product-mobile.jpg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      width: 100%;
+      padding-top: calc(
+        480 / 686 * 100%
+      ); // Usa padding-top para crear una relación de aspecto
+    }
+
+    .info {
+      width: 100%;
+      padding: 2rem;
+    }
+    .hero-container > * {
+      margin: 0;
+    }
+  }
+
+  .attribution {
+    @include column;
+    align-items: center;
+  }
 }
