@@ -1,0 +1,11 @@
+[build]
+  base = "/"
+  publish = "dist" 
+  command = "npm run build"
+
+[functions]
+  directory = "netlify/functions" # Ajusta esta ruta si es diferente en tu proyecto
+
+[dev]
+  command = "npm run start" 
+  port = 9000
