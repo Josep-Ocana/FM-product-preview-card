@@ -85,6 +85,11 @@ body {
         padding: 1rem;
       }
     }
+
+    .add-to-card-btn:hover {
+      cursor: pointer;
+      background-color: $dark-cyan2;
+    }
   }
   .info > *:not(:last-child) {
     margin-bottom: 1.8rem;
@@ -107,7 +112,12 @@ body {
       family: $font-primary;
       weight: 500;
     }
+    color: $dark-cyan;
   }
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 // Mobile screen
