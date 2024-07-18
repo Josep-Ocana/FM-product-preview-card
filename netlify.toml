@@ -1,7 +1,8 @@
 [build]
   base = "/"
-  publish = "dist" 
+  publish = "dist/" 
   command = "npm run build"
+  branch = "testing"
 
 [functions]
   directory = "netlify/functions" # Ajusta esta ruta si es diferente en tu proyecto
