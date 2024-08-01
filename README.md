@@ -31,7 +31,7 @@ Users should be able to:
 
 #### Mobile design
 
-![My desktop screenshot](./screenshots/mobile-design.jpeg)
+![My mobile screenshot](./screenshots/mobile-design.jpeg)
 
 ### Links
 
